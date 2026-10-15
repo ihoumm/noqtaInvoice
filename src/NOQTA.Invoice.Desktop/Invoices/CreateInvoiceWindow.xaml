@@ -1,0 +1,236 @@
+<Window x:Class="NOQTA.Invoice.Desktop.Invoices.CreateInvoiceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Loaded="Window_Loaded"
+        Title="New Invoice"
+        Height="760"
+        Width="980"
+        MinHeight="680"
+        MinWidth="860"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="CanResize">
+
+    <Grid Margin="32">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="24"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="24"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <StackPanel Grid.Row="0">
+
+            <TextBlock Text="New Invoice"
+                       FontSize="24"
+                       FontWeight="SemiBold"/>
+
+            <TextBlock Text="Enter the invoice information and items"
+                       Margin="0,6,0,0"
+                       Foreground="#6B7280"
+                       FontSize="13"/>
+
+        </StackPanel>
+
+        <!-- Form -->
+        <ScrollViewer Grid.Row="2"
+                      VerticalScrollBarVisibility="Auto">
+
+            <StackPanel>
+
+                <!-- Invoice Information -->
+                <TextBlock Text="Invoice Information"
+                           FontSize="16"
+                           FontWeight="SemiBold"/>
+
+                <Grid Margin="0,16,0,0">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="16"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="16"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+
+                        <TextBlock Text="Customer"
+                                   FontWeight="SemiBold"/>
+
+                        <ComboBox x:Name="CustomerComboBox"
+                                  Margin="0,8,0,0"
+                                  Height="36"
+                                  DisplayMemberPath="Name"/>
+
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2">
+
+                        <TextBlock Text="Invoice Number"
+                                   FontWeight="SemiBold"/>
+
+                        <TextBox x:Name="InvoiceNumberTextBox"
+         Margin="0,8,0,0"
+         Height="36"
+         Text="Generated automatically"
+         IsReadOnly="True"
+         IsTabStop="False"
+         Foreground="#6B7280"
+         ToolTip="The invoice number is generated automatically when the invoice is created."/>
+
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="4">
+
+                        <TextBlock Text="Invoice Type"
+                                   FontWeight="SemiBold"/>
+
+                        <ComboBox x:Name="InvoiceTypeComboBox"
+                                  Margin="0,8,0,0"
+                                  Height="36"
+                                  SelectedIndex="0">
+                            <ComboBoxItem Content="Invoice"/>
+                            <ComboBoxItem Content="Quote"/>
+                        </ComboBox>
+
+                    </StackPanel>
+
+                </Grid>
+
+                <!-- Currency -->
+                <StackPanel Margin="0,24,0,0">
+
+                    <TextBlock Text="Currency"
+                               FontWeight="SemiBold"/>
+
+                    <ComboBox x:Name="CurrencyComboBox"
+                              Margin="0,8,0,0"
+                              Height="36"
+                              Width="220"
+                              HorizontalAlignment="Left"
+                              SelectedIndex="0">
+                        <ComboBoxItem Content="MAD"/>
+                    </ComboBox>
+
+                </StackPanel>
+
+                <!-- Items -->
+                <Grid Margin="0,32,0,0">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="16"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0"
+                               Text="Invoice Items"
+                               FontSize="16"
+                               FontWeight="SemiBold"/>
+
+                    <Grid Grid.Row="2">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="16"/>
+                            <ColumnDefinition Width="1.2*"/>
+                            <ColumnDefinition Width="16"/>
+                            <ColumnDefinition Width="1.5*"/>
+                            <ColumnDefinition Width="16"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0"
+                                   Text="Description"
+                                   FontWeight="SemiBold"/>
+
+                        <TextBlock Grid.Column="2"
+                                   Text="Quantity"
+                                   FontWeight="SemiBold"/>
+
+                        <TextBlock Grid.Column="4"
+                                   Text="Unit Price"
+                                   FontWeight="SemiBold"/>
+
+                    </Grid>
+
+                </Grid>
+
+                <StackPanel x:Name="ItemsPanel"
+                            Margin="0,12,0,0"/>
+
+                <Button Content="Add Item"
+                        Width="100"
+                        HorizontalAlignment="Left"
+                        Margin="0,12,0,0"
+                        Click="AddItemButton_Click"/>
+
+                <!-- Totals -->
+                <Border Margin="0,28,0,0"
+                        BorderBrush="#E5E7EB"
+                        BorderThickness="1"
+                        Padding="20">
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="180"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0"
+                                   Text="Subtotal"
+                                   FontSize="15"
+                                   FontWeight="SemiBold"
+                                   VerticalAlignment="Center"/>
+
+                        <TextBlock x:Name="SubtotalTextBlock"
+                                   Grid.Column="1"
+                                   Text="0.00 MAD"
+                                   FontSize="18"
+                                   FontWeight="SemiBold"
+                                   HorizontalAlignment="Right"
+                                   VerticalAlignment="Center"/>
+
+                    </Grid>
+
+                </Border>
+
+                <TextBlock x:Name="ValidationTextBlock"
+                           Margin="0,20,0,0"
+                           Foreground="#B91C1C"
+                           TextWrapping="Wrap"/>
+
+            </StackPanel>
+
+        </ScrollViewer>
+
+        <!-- Actions -->
+        <Border Grid.Row="4"
+                BorderBrush="#E5E7EB"
+                BorderThickness="0,1,0,0"
+                Padding="0,20,0,0">
+
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+
+                <Button Content="Cancel"
+                        Width="100"
+                        Margin="0,0,12,0"
+                        IsCancel="True"/>
+
+                <Button Content="Create Invoice"
+                        Width="140"
+                        IsDefault="True"
+                        Click="CreateInvoiceButton_Click"/>
+
+            </StackPanel>
+
+        </Border>
+
+    </Grid>
+
+</Window>

@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/NOQTA.Invoice.Application/NOQTA.Invoice.Application.csproj" />
+    <Project Path="src/NOQTA.Invoice.Desktop/NOQTA.Invoice.Desktop.csproj" />
+    <Project Path="src/NOQTA.Invoice.Domain/NOQTA.Invoice.Domain.csproj" />
+    <Project Path="src/NOQTA.Invoice.Infrastructure/NOQTA.Invoice.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/NOQTA.Invoice.Application.Tests/NOQTA.Invoice.Application.Tests.csproj" />
+    <Project Path="tests/NOQTA.Invoice.Domain.Tests/NOQTA.Invoice.Domain.Tests.csproj" />
+    <Project Path="tests/NOQTA.Invoice.Infrastructure.Tests/NOQTA.Invoice.Infrastructure.Tests.csproj" />
+  </Folder>
+</Solution>

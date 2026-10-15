@@ -1,0 +1,261 @@
+<Window x:Class="NOQTA.Invoice.Desktop.Company.CompanyProfileWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Company Profile"
+        Height="760"
+        Width="820"
+        MinHeight="680"
+        MinWidth="760"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="CanResize">
+
+    <Grid Margin="32">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="24"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="24"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <StackPanel Grid.Row="0">
+
+            <TextBlock Text="Company Profile"
+                       FontSize="24"
+                       FontWeight="SemiBold"/>
+
+            <TextBlock Text="Manage the company information displayed on your invoices"
+                       Margin="0,6,0,0"
+                       Foreground="#6B7280"
+                       FontSize="13"/>
+
+        </StackPanel>
+
+        <!-- Form -->
+        <ScrollViewer Grid.Row="2"
+                      VerticalScrollBarVisibility="Auto">
+
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Legal Name -->
+                <StackPanel Grid.Row="0">
+
+                    <TextBlock Text="Legal Name"
+                               FontWeight="SemiBold"/>
+
+                    <TextBox x:Name="LegalNameTextBox"
+                             Margin="0,8,0,0"
+                             Height="36"/>
+
+                    <TextBlock Text="Optional when a logo is provided."
+                               Margin="0,4,0,0"
+                               Foreground="#6B7280"
+                               FontSize="12"/>
+
+                </StackPanel>
+
+                <!-- Email / Phone -->
+                <Grid Grid.Row="2">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="16"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+
+                        <TextBlock Text="Email"
+                                   FontWeight="SemiBold"/>
+
+                        <TextBox x:Name="EmailTextBox"
+                                 Margin="0,8,0,0"
+                                 Height="36"/>
+
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2">
+
+                        <TextBlock Text="Phone"
+                                   FontWeight="SemiBold"/>
+
+                        <TextBox x:Name="PhoneTextBox"
+                                 Margin="0,8,0,0"
+                                 Height="36"/>
+
+                    </StackPanel>
+
+                </Grid>
+
+                <!-- Address -->
+                <Grid Grid.Row="4">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="16"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="16"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0"
+                               Text="Address"
+                               FontWeight="SemiBold"/>
+
+                    <Grid Grid.Row="2">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="16"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0">
+
+                            <TextBlock Text="Street"
+                                       Foreground="#6B7280"
+                                       FontSize="13"/>
+
+                            <TextBox x:Name="StreetTextBox"
+                                     Margin="0,6,0,0"
+                                     Height="36"/>
+
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="2">
+
+                            <TextBlock Text="City"
+                                       Foreground="#6B7280"
+                                       FontSize="13"/>
+
+                            <TextBox x:Name="CityTextBox"
+                                     Margin="0,6,0,0"
+                                     Height="36"/>
+
+                        </StackPanel>
+
+                    </Grid>
+
+                    <Grid Grid.Row="4">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="16"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0">
+
+                            <TextBlock Text="Postal Code"
+                                       Foreground="#6B7280"
+                                       FontSize="13"/>
+
+                            <TextBox x:Name="PostalCodeTextBox"
+                                     Margin="0,6,0,0"
+                                     Height="36"/>
+
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="2">
+
+                            <TextBlock Text="Country"
+                                       Foreground="#6B7280"
+                                       FontSize="13"/>
+
+                            <TextBox x:Name="CountryTextBox"
+                                     Margin="0,6,0,0"
+                                     Height="36"/>
+
+                        </StackPanel>
+
+                    </Grid>
+
+                </Grid>
+
+                <!-- Tax Identifier -->
+                <StackPanel Grid.Row="6">
+
+                    <TextBlock Text="Tax Identifier"
+                               FontWeight="SemiBold"/>
+
+                    <TextBox x:Name="TaxIdentifierTextBox"
+                             Margin="0,8,0,0"
+                             Height="36"/>
+
+                    <TextBlock Text="Optional"
+                               Margin="0,4,0,0"
+                               Foreground="#6B7280"
+                               FontSize="12"/>
+
+                </StackPanel>
+
+                <!-- Logo Path -->
+                <StackPanel Grid.Row="8">
+
+                    <TextBlock Text="Logo Path"
+                               FontWeight="SemiBold"/>
+
+                    <TextBox x:Name="LogoPathTextBox"
+                             Margin="0,8,0,0"
+                             Height="36"/>
+
+                    <TextBlock Text="Optional. Enter the path to the company logo file."
+                               Margin="0,4,0,0"
+                               Foreground="#6B7280"
+                               FontSize="12"/>
+
+                </StackPanel>
+
+                <!-- Validation -->
+                <TextBlock Grid.Row="10"
+                           x:Name="ValidationTextBlock"
+                           Foreground="#B91C1C"
+                           TextWrapping="Wrap"/>
+
+            </Grid>
+
+        </ScrollViewer>
+
+        <!-- Actions -->
+        <Border Grid.Row="4"
+                BorderBrush="#E5E7EB"
+                BorderThickness="0,1,0,0"
+                Padding="0,20,0,0">
+
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right">
+
+                <Button Content="Cancel"
+                        Width="100"
+                        Margin="0,0,12,0"
+                        IsCancel="True"/>
+
+                <Button x:Name="SaveButton"
+                        Content="Save Company Profile"
+                        Width="160"
+                        IsDefault="True"
+                        Click="SaveButton_Click"/>
+
+            </StackPanel>
+
+        </Border>
+
+    </Grid>
+
+</Window>

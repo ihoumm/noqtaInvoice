@@ -1,0 +1,246 @@
+<Window x:Class="NOQTA.Invoice.Desktop.Invoices.EditDraftInvoiceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Edit Draft Invoice"
+        Height="800"
+        Width="1050"
+        MinHeight="700"
+        MinWidth="900"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="CanResize">
+
+    <Grid Margin="28">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Grid Grid.Row="0">
+
+            <StackPanel>
+                <TextBlock x:Name="InvoiceNumberTextBlock"
+                           FontSize="24"
+                           FontWeight="SemiBold"/>
+
+                <TextBlock x:Name="InvoiceInfoTextBlock"
+                           Margin="0,6,0,0"
+                           Foreground="#6B7280"/>
+            </StackPanel>
+
+            <TextBlock Text="Draft"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       FontSize="14"
+                       FontWeight="SemiBold"
+                       Foreground="#6B7280"/>
+
+        </Grid>
+
+        <!-- Customer -->
+        <Border Grid.Row="2"
+                BorderBrush="#E5E7EB"
+                BorderThickness="1"
+                CornerRadius="4"
+                Padding="16">
+
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0">
+
+                    <TextBlock Text="Bill To"
+                               FontWeight="SemiBold"
+                               FontSize="15"/>
+
+                    <TextBlock x:Name="CustomerNameTextBlock"
+                               Margin="0,10,0,0"
+                               FontWeight="SemiBold"/>
+
+                    <TextBlock x:Name="CustomerEmailTextBlock"
+                               Margin="0,4,0,0"
+                               Foreground="#6B7280"/>
+
+                </StackPanel>
+
+                <StackPanel Grid.Column="1">
+
+                    <TextBlock Text="Address"
+                               FontWeight="SemiBold"
+                               FontSize="15"/>
+
+                    <TextBlock x:Name="CustomerAddressTextBlock"
+                               Margin="0,10,0,0"
+                               Foreground="#6B7280"
+                               TextWrapping="Wrap"/>
+
+                </StackPanel>
+
+            </Grid>
+
+        </Border>
+
+        <!-- Items + Add -->
+        <Grid Grid.Row="4">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="12"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+
+                <TextBlock Text="Invoice Items"
+                           FontSize="16"
+                           FontWeight="SemiBold"
+                           VerticalAlignment="Center"/>
+
+                <Button Content="Add Item"
+                        HorizontalAlignment="Right"
+                        Padding="14,7"
+                        Click="AddItemButton_Click"/>
+
+            </Grid>
+
+            <ScrollViewer Grid.Row="2"
+                          VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Disabled">
+
+                <StackPanel x:Name="ItemsPanel"/>
+
+            </ScrollViewer>
+
+        </Grid>
+
+        <!-- Bottom -->
+        <Grid Grid.Row="6">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="360"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Validation -->
+            <TextBlock x:Name="ValidationTextBlock"
+                       Grid.Column="0"
+                       VerticalAlignment="Bottom"
+                       Foreground="#B91C1C"
+                       TextWrapping="Wrap"
+                       Margin="0,0,24,4"/>
+
+            <!-- Totals -->
+            <Grid Grid.Column="1">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="0"
+                           Text="Subtotal"
+                           Margin="0,0,20,8"/>
+
+                <TextBlock x:Name="SubtotalTextBlock"
+                           Grid.Row="0"
+                           Grid.Column="1"
+                           HorizontalAlignment="Right"
+                           Margin="0,0,0,8"/>
+
+                <TextBlock Grid.Row="1"
+                           Text="Tax Rate"
+                           Margin="0,0,20,8"/>
+
+                <TextBox x:Name="TaxRateTextBox"
+                         Grid.Row="1"
+                         Grid.Column="1"
+                         Width="110"
+                         HorizontalContentAlignment="Right"
+                         Padding="6"
+                         TextChanged="TotalsInput_TextChanged"/>
+
+                <TextBlock Grid.Row="2"
+                           Text="Tax"
+                           Margin="0,8,20,8"/>
+
+                <TextBlock x:Name="TaxTextBlock"
+                           Grid.Row="2"
+                           Grid.Column="1"
+                           HorizontalAlignment="Right"
+                           Margin="0,8,0,8"/>
+
+                <TextBlock Grid.Row="3"
+                           Text="Discount"
+                           Margin="0,0,20,8"/>
+
+                <TextBox x:Name="DiscountTextBox"
+                         Grid.Row="3"
+                         Grid.Column="1"
+                         Width="110"
+                         HorizontalContentAlignment="Right"
+                         Padding="6"
+                         TextChanged="TotalsInput_TextChanged"/>
+
+                <Border Grid.Row="4"
+                        Grid.ColumnSpan="2"
+                        BorderBrush="#E5E7EB"
+                        BorderThickness="0,1,0,0"
+                        Margin="0,4,0,10"/>
+
+                <TextBlock Grid.Row="5"
+                           Text="Total"
+                           FontSize="17"
+                           FontWeight="SemiBold"/>
+
+                <TextBlock x:Name="TotalTextBlock"
+                           Grid.Row="5"
+                           Grid.Column="1"
+                           HorizontalAlignment="Right"
+                           FontSize="17"
+                           FontWeight="SemiBold"/>
+
+            </Grid>
+
+        </Grid>
+
+        <!-- Save / Cancel -->
+        <StackPanel Grid.Row="6"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Bottom"
+                    Margin="0,0,0,4">
+
+            <Button Content="Cancel"
+                    Padding="16,8"
+                    Margin="0,0,10,0"
+                    Click="CancelButton_Click"/>
+
+            <Button x:Name="SaveButton"
+                    Content="Save Changes"
+                    Padding="16,8"
+                    Click="SaveButton_Click"/>
+
+        </StackPanel>
+
+    </Grid>
+
+</Window>
